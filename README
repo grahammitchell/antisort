@@ -1,0 +1,163 @@
+ANTISORT v 0.4b (c) 2001 Graham Mitchell - http://grahammitchell.com/
+    6 July 2001
+
+0) TABLE OF CONTENTS
+
+    1) INTRODUCTION
+    2) SYNTAX
+    3) EXAMPLES
+    4) INSTALLATION
+    5) KNOWN BUGS
+    6) REGISTRATION
+    7) VERSION HISTORY
+    8) ADDITIONAL INFO
+
+
+1) INTRODUCTION
+
+    This handy little DOS-based utility takes a file containing several lines
+    of text and outputs those same lines to the screen or another file in
+    random order.
+
+    This program began after having a conversation with a friend who wanted
+    to know if there was a way to do such a thing on a Windows machine. After
+    explaining that there wasn't, the problem siezed me and I spent an hour
+    hacking something together and mailed him a copy.  He was surprised and
+    pleased, but that wasn't the end of the story.  I wasn't happy with how
+    the randomizing was being done and so spent a couple of days obsessed
+    with how to mix up an array as efficiently as possible but still maintain
+    a nice, smoothly random distribution.  This is the end result, with a
+    little documentation thrown in.
+
+
+2) SYNTAX
+
+    The syntax is as follows:
+
+        ANTISORT infile [outfile]
+
+    where
+
+        infile        Specifies the file containing the lines to be
+                      randomized.
+        outfile       (optional) Specifies the name of a file to put the
+                      randomized lines into.  If omitted, output will be to
+                      the screen.
+
+3) EXAMPLES
+
+    ANTISORT VALUES.TXT
+
+        Outputs the lines from the file VALUES.TXT to the screen in random
+	order.
+
+
+    ANTISORT VALUES.TXT MIXED_UP.TXT
+
+        Outputs the lines from the file VALUES.TXT to the file MIXED_UP.TXT
+	in random order. If MIXED_UP.TXT does not exist it will be created.
+	If it does exist, it will be overwritten without prompting.
+
+
+4) INSTALLATION
+
+    Just copy all the files from this archive into a subdirectory.  To
+    uninstall, simply delete them (ANTISORT doesn't require or create any
+    .INI files, registry entries, data files, etc).  You might want to put
+    ANTISORT.EXE in your path (C:\DOS or C:\WINDOWS\COMMAND).
+
+
+5) KNOWN BUGS
+
+    ANTISORT doesn't choke on binary files, but it doesn't do anything
+    useful.  Please feed it ASCII text only.
+
+    Though it's not really a bug, if the output file you specify already
+    exists, it will be overwritten without prompting.  The program also
+    doesn't check to see if your input file and output file are the same.
+    If they are, things work as expected: the input file is replaced with
+    a scrambled version and the original version is lost.
+
+    Also not really a bug is that ANTISORT won't work on really huge files.
+    This is because the nature of randomizing lines pretty much requires that
+    the whole file be loaded into memory at one time.  Technically, the
+    limiting factor is some combination of the number of lines and the
+    absolute size of the file.  For example, my computer had no problem
+    mixing up a file of over three million lines if the file was no more than
+    a few megabytes.  It also easily handled a 40MB file with 500,000 lines.
+    But a 60MB file nearly killed my machine due to disk thrashing when
+    trying to write out the randomized file.  And a file with five million
+    lines bombed out with an "Out Of Memory" error even though it was under
+    50MB. The moral of the story is, if you need to randomize lines in a file
+    with more than a few million lines or more than 50MB in size, you'll
+    either need a better machine than mine or a different utility.
+
+
+6) REGISTRATION
+
+    This program is free software; you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the
+    Free Software Foundation; either version 2 of the License, or (at your
+    option) any later version.
+
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+    Public License (LICENSE.TXT) for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+    If you enjoy this program, I'd appreciate it if you drop me a line
+    saying so.  Please send any bug reports to me, as well.
+
+    I wrote this program for my own education and to help out a friend, and
+    have made it available thinking that perhaps there are others who would
+    find it useful.  I do not need or expect any money from you if you use
+    it; this is freeware in every sense of the word.  However, if you really
+    feel you should send me money, I guess that'd be okay, too.
+
+    Thanks for using my program.
+
+
+7) VERSION HISTORY/CHANGES
+
+    0.4b         fourth release             6 July 2001
+
+        changes from v 0.3b to 0.4b
+
+        + fixed a stupid bug where ANTISORT would quit reading lines of
+          input once a blank line was encountered
+
+    0.3b         third release              4 June 2001
+
+        changes from v 0.2b to 0.3b
+
+        + rewrote input routines to handle lines without terminating newline
+        + further reduced memory footprint (so you should be able to sort
+          even longer/larger files now)
+        + sped up input and output
+        + now correctly handles zero-length files
+
+    0.2b         second release             1 June 2001
+
+        changes from v 0.1b to 0.2b
+
+        + completely rewrote the "sort", speeding things up by as much as
+          130x (!) for large files
+        + reduced memory footprint
+        + added ability to specify output file on the command-line
+        + now licensed under the terms of the GNU General Public License
+        + source code now included in archive
+        + added documentation
+
+    0.1b         initial release           30 May 2001
+
+
+8) ADDITIONAL INFORMATION
+
+    Name:       asort04b.zip
+    Version:    0.4b
+    Author:     Graham Mitchell
+    WWW:        http://grahammitchell.com/
